@@ -1,494 +1,271 @@
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" type="image/ico" href="images/icon_page.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
-    <title>Crud Clases</title>
+  <meta charset="UTF-8">
+  <title>CRUD Estático con HTML</title>
+  <!-- Enlaces a archivos CSS y JS -->
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+  <script src="funciones.js"></script>
 </head>
 
+<style> /* Fondo gris oscuro */
+    
+
+    
+    body {
+      background-color: #c1b0b0;
+    }
+    
+    /* Encabezado en gris claro */
+    h1 {
+      color: #e6e6e6;
+    }
+    
+    /* Texto en blanco */
+    p {
+      color: #ffffff;
+    }
+    
+    /* Botón en gris oscuro con borde gris claro */
+    button {
+      background-color: #333333;
+      color: #e6e6e6;
+      border: 1px solid #cccccc;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    
+    /* Botón cuando se hace hover en gris claro */
+    button:hover {
+      background-color: #4d4d4d;
+    }
+    
+
+    
+    /* Borde de la tabla en gris oscuro */
+    table, th, td {
+      border: 1px solid #333333;
+    }
+    
+    /* Encabezado de tabla en gris oscuro */
+    th {
+      background-color: #333333;
+      color: #e6e6e6;
+      text-align: left;
+      padding: 10px;
+    }
+    
+    /* Celda de tabla en gris claro */
+    td {
+      padding: 10px;
+    }
+    
+    /* Enlace en gris claro con subrayado en gris oscuro */
+    a {
+      color: #e6e6e6;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: #cccccc;
+      text-decoration: underline;
+    }
+
+
+    .botonsaso {
+      color: #ffffff;
+      margin-top: 1%;
+      margin-left: 22%;
+      width: 50%;
+      height: 2cm;
+      
+    }
+
+        /* Tabla con fondo gris claro */
+        table {
+        
+        background-color: #f2f2f2;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 5%;
+      }
+      .formss{
+        
+        
+        
+        margin-left: 40%;
+        margin-top: 3%;
+      }
+      
+      </style>
+
 <body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Super CRUD</title>
+    </head>
+    <body>
+        <header class="header" id="header">
+            <figure class="logo">
+                <img src="dinosaur.jpg" height="60" alt="" />
+            </figure>
+            <nav class="menu">
+        
+                        <h1>Super CRUD lml</h1>
+        
+        
+        
+            </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>
+                        <button onclick="editar(1)">Editar</button>
+                        <button onclick="eliminar(1)">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>María</td>
+                    <td>González</td>
+                    <td>
+                        <button onclick="editar(2)">Editar</button>
+                        <button onclick="eliminar(2)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <br><button class="botonsaso" onclick="mostrarFormulario()">Agregar o editar usuarios</button>
+    
+        <div id="formulario" class="formss">
+            <h2>Agregar o editar usuarios</h2>
+            <form>
+                <label for="id">ID:</label>
+                <input type="text" id="id" readonly><br>
 
-    <style>
-        /*Header*/
-        * {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-style: normal;
-            font-weight: 500;
-        }
-
-        body {
-            margin-top: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            display: flex;
-            font-size: 3.2rem;
-            direction: initial;
-            color: #00438D;
-            text-align: center;
-            margin-right: 56rem;
-        }
-
-        form {
-
-            text-align: center;
-            margin-top: 7rem;
-            font-size: 2rem;
-
-
-        }
-
-        input {
-            width: 2rem;
-            height: 5rem;
-        }
-
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            height: 100px;
-            border-bottom: 1px solid #D5D9D9;
-            margin-top: 0;
-            padding-top: 0;
-        }
-
-        .header a {
-            font-size: 1em;
-            font-family: 'Quicksand', sans-serif;
-            color: #000000;
-            padding: 0 10px;
-            height: inherit;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            margin-block-start: 3px;
-            margin-block-end: 3px;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-        }
-
-        .logo img {
-            margin: 0px 0px 0px 5px;
-            display: flex;
-            padding: 0;
-            border: 0;
-        }
-
-        .header ol {
-            list-style: none;
-            display: flex;
-            /*Sirve para poner la lista de elementos de la lista horizontalmente*/
-            height: inherit;
-        }
-
-        .header ol li {
-            height: inherit;
-        }
-
-        .link:hover {
-            color: white;
-            background-color: #00438D;
-            border: 0.5px solid #D5D9D9;
-        }
-
-        ol {
-            margin: 0;
-            padding: 0;
-        }
-
-        /*menu*/
-        .menu {
-            height: inherit;
-        }
-
-        .menu li {
-            display: inline;
-            /*para poner la lista en horizontal*/
-        }
-
-        /*Footer*/
-        .footer {
-            display: block;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            border-top: 1px solid #D5D9D9;
-            margin-top: 0;
-            padding: 1em;
-        }
-
-        a:link {
-            text-decoration: none;
-        }
-
-        .social {
-            width: 32px;
-            height: 32px;
-            display: inline-block;
-        }
-
-        .footer-fb {
-            background-image: url('../images/fb.ico');
-        }
-
-        .footer-twitter {
-            background-image: url('../images/twitter.ico');
-        }
-
-        .footer-instagram {
-            background-image: url('../images/instagram.ico');
-        }
-
-        .footer-github {
-            background-image: url('../images/github.ico');
-        }
-
-        .footer-linkedin {
-            background-image: url('../images/linkedin.ico');
-        }
-
-        /*End Footer*/
-
-
-        .tablita {
-            display: inline-block;
-        }
-
-        /*Tablaaaaaa Estilos*/
-        .tabla {
-            border-collapse: collapse;
-            /*Esta propiedad hace que parezca mas una tabla*/
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        table tr th {
-            border: 1px solid #D5D9D9;
-            width: 120px;
-            height: 25px;
-            color: white;
-            background-color: #0b69ce;
-        }
-
-        /* Para el estilo de las nuevas celdas */
-        td {
-            border: 1px solid #f6f7f7;
-            width: 100px;
-            height: 25px;
-        }
-
-        .caja {
-            display: block;
-        }
-
-        .caja label {
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        .caja input {
-            width: 10em;
-            height: 3em;
-            text-align: center;
-            font-family: 'Quicksand', sans-serif;
-            border-style: outset;
-            border-radius: 10px 10px 10px 10px;
-            border: 2px solid rgba(0, 0, 0, 0.708);
-            font-size: 1.2rem;
-
-        }
-
-        .submit {
-            width: 12em;
-            height: 4rem;
-            font-family: 'Quicksand', sans-serif;
-            color: white;
-            background-color: #00438D;
-            border: 2px solid rgba(0, 0, 0, 0);
-            border-style: outset;
-            margin-top: 2rem;
-            border-radius: 10px 10px 10px 10px;
-        }
-
-        footer {
-            background-color: #f2f2f2;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            margin-top: 13rem;
-        }
-
-        p {
-            font-size: 2rem;
-
-        }
-
-        li a {
-            font-size: 1.5rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        .footer-links li:last-child {
-            margin-right: 0;
-        }
-
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: #333;
-        }
-    </style>
-    <header class="header" id="header">
-        <figure class="logo">
-            <img src="" height="60" alt="" />
-        </figure>
-        <nav class="menu">
-            <ol>
-                <ol>
-                    <h1>Bienvenido a la lista de Productos - CRUD</h1>
-                </ol>
-        </nav>
-    </header>
-    <br />
-    <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off">
-        <div class="tablita">
-            <table class="tabla" id="tabla">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>NumeroProd</th>
-                        <th>TipoObjeto</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
+    
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required><br>
+                <br/>
+                <button type="button"  onclick="agregar()">Agregar</button>
+                <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+                <button type="button" onclick="actualizar()">Guardar cambios</button>
+            </form>
         </div>
-        <br />
-        <br />
-        <div class="caja">
-            <label for="nom">Nombre</label> <input type="text" id="nom" placeholder="Escriba su nombre aqui" required
-                maxlength="8" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Solo se permiten letras y espacios">
-            <label for="ape">NumProd</label> <input type="text" id="ape" placeholder="Escriba su apellido aqui"
-                required maxlength="10" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Solo se permiten letras y espacios">
-            <label for="pais">Numero</label> <input type="text" id="pais" placeholder="Escriba numero aqui" required
-                maxlength="8">
-        </div>
-        <br />
-        <input class="submit" type="submit" value="Escribir">
-    </form>
-    <br />
-    <br />
-    </div>
 
-    <div>
-        <footer>
-            <div class="container">
-                <p>&copy; 2023 Crud implementacion. Todos los derechos reservados.</p>
-                <ul class="footer-links">
-                    <li><a href="#">Creado</a></li>
-                    <li><a href="#">Por</a></li>
-                    <li><a href="#">Gabriel</a></li>
-                    <li><a href="#">Ocampo</a></li>
-                </ul>
-            </div>
-        </footer>
 
-    </div>
+
+    
+
+
+  
+
+
+  <script>
+    function editar(id) {
+  // Obtener los datos de la fila seleccionada y mostrarlos en el formulario
+  var fila = document.getElementsByTagName("tr")[id];
+  var celdas = fila.getElementsByTagName("td");
+  var idInput = document.getElementById("id");
+  var nombreInput = document.getElementById("nombre");
+  var apellidoInput = document.getElementById("apellido");
+
+  idInput.value = celdas[0].textContent;
+  nombreInput.value = celdas[1].textContent;
+  apellidoInput.value = celdas[2].textContent;
+
+  // Mostrar el formulario
+  document.getElementById("formulario").style.display = "block";
+}
+
+function actualizar() {
+  // Obtener los datos del formulario y actualizar la fila correspondiente en la tabla
+  var idInput = document.getElementById("id");
+  var nombreInput = document.getElementById("nombre");
+  var apellidoInput = document.getElementById("apellido");
+
+  var id = idInput.value;
+  var fila = document.getElementsByTagName("tr")[id];
+  var celdas = fila.getElementsByTagName("td");
+
+  celdas[1].textContent = nombreInput.value;
+  celdas[2].textContent = apellidoInput.value;
+
+  // Cerrar el formulario
+  cerrarFormulario();
+}
+
+function eliminar(id) {
+  // Eliminar la fila correspondiente en la tabla
+  var fila = document.getElementsByTagName("tr")[id];
+  fila.parentNode.removeChild(fila);
+}
+
+function cerrarFormulario() {
+  // Ocultar el formulario
+  document.getElementById("formulario").style.display = "none";
+}
+function mostrarFormulario() {
+	// Mostrar el formulario
+	document.getElementById("formulario").style.display = "block";
+}
+function actualizarIds() {
+    var tabla = document.getElementsByTagName("table")[0];
+    var filas = tabla.rows;
+
+    for (var i = 1; i < filas.length; i++) {
+        filas[i].cells[0].innerHTML = i;
+        filas[i].cells[3].innerHTML = '<button onclick="editar(' + i + ')">Editar</button><button onclick="eliminar(' + i + ')">Eliminar</button>';
+    }
+}
+function agregar() {
+    // Obtener los datos del formulario
+    var nombreInput = document.getElementById("nombre");
+    var apellidoInput = document.getElementById("apellido");
+
+    // Obtener la cantidad actual de filas en la tabla
+    var tabla = document.getElementsByTagName("table")[0];
+    var rowCount = tabla.rows.length;
+
+    // Crear una nueva fila en la tabla con los datos del formulario
+    var fila = tabla.insertRow(-1);
+    var idCell = fila.insertCell(0);
+    var nombreCell = fila.insertCell(1);
+    var apellidoCell = fila.insertCell(2);
+    var accionesCell = fila.insertCell(3);
+
+    idCell.innerHTML = rowCount;
+    nombreCell.innerHTML = nombreInput.value;
+    apellidoCell.innerHTML = apellidoInput.value;
+    accionesCell.innerHTML = '<button onclick="editar(' + rowCount + ')">Editar</button><button onclick="eliminar(' + rowCount + ')">Eliminar</button>';
+
+    // Actualizar los ids de las filas
+    actualizarIds();
+
+    // Cerrar el formulario
+    cerrarFormulario();
+}
+
+  </script>
+
+
+
+
 </body>
-
-<script>
-    // Obtener la tabla del DOM
-    const tabla = document.getElementById('tabla');
-
-    // Obtener el botón de envío del formulario
-    const botonSubmit = document.querySelector('.submit');
-
-    // Obtener los campos de entrada del formulario
-    const inputNombre = document.getElementById('nom');
-    const inputApellido = document.getElementById('ape');
-    const inputPais = document.getElementById('pais');
-
-    // Obtener los datos almacenados en localStorage
-    let datosGuardados = JSON.parse(localStorage.getItem('datos'));
-
-    // Si no hay datos guardados, inicializar un array vacío
-    if (!datosGuardados) {
-        datosGuardados = [];
-    }
-
-    // Función que guarda los datos en localStorage y en la tabla
-    function guardarDatos() {
-        // Obtener los valores de los campos de entrada
-        const nombre = inputNombre.value;
-        const apellido = inputApellido.value;
-        const pais = inputPais.value;
-
-        // Crear un objeto con los datos del formulario
-        const datos = {
-            nombre,
-            apellido,
-            pais,
-        };
-
-        // Agregar los datos al array de datos guardados
-        datosGuardados.push(datos);
-
-        // Guardar los datos en localStorage
-        localStorage.setItem('datos', JSON.stringify(datosGuardados));
-
-        // Actualizar la tabla
-        actualizarTabla();
-    }
-
-    // Función que actualiza la tabla con los datos guardados
-    function actualizarTabla() {
-        // Vaciar el cuerpo de la tabla
-        tabla.tBodies[0].innerHTML = '';
-
-        // Iterar sobre los datos guardados y agregar filas a la tabla
-        datosGuardados.forEach((datos, index) => {
-            const fila = tabla.tBodies[0].insertRow();
-
-            const celdaNombre = fila.insertCell();
-            celdaNombre.textContent = datos.nombre;
-
-            const celdaApellido = fila.insertCell();
-            celdaApellido.textContent = datos.apellido;
-
-            const celdaPais = fila.insertCell();
-            celdaPais.textContent = datos.pais;
-
-            const celdaOpciones = fila.insertCell();
-            const botonEliminar = document.createElement('button');
-            botonEliminar.textContent = 'Eliminar';
-            botonEliminar.addEventListener('click', () => eliminarDatos(index));
-            celdaOpciones.appendChild(botonEliminar);
-        });
-    }
-
-    // Función que elimina los datos en una posición del array y actualiza la tabla
-    function eliminarDatos(index) {
-        datosGuardados.splice(index, 1);
-        localStorage.setItem('datos', JSON.stringify(datosGuardados));
-        actualizarTabla();
-    }
-
-    // Función que se ejecuta al cargar la página para mostrar los datos guardados
-    function inicializar() {
-        actualizarTabla();
-    }
-
-    // Asignar la función guardarDatos al evento submit del formulario
-    botonSubmit.addEventListener('click', guardarDatos);
-
-    // Mostrar los datos guardados al cargar la página
-    inicializar();
-</script>
-
-<script>
-    var Fila = null
-
-    function onSubmit() {
-        let DataForm = Leer()
-        if (Fila == null) {
-            InsertarDatos(DataForm)
-        } else {
-            Actualizar(DataForm)
-            Vaciar()
-        }
-    }
-
-    function Leer() {
-        let DataForm = {}
-        DataForm["nom"] = document.getElementById("nom").value
-        DataForm["ape"] = document.getElementById("ape").value
-        DataForm["pais"] = document.getElementById("pais").value
-        return DataForm
-    }
-
-    function InsertarDatos(data) {
-        let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]
-        let Fila = table.insertRow(table.length)
-        columna1 = Fila.insertCell(0).innerHTML = data.nom
-        columna2 = Fila.insertCell(1).innerHTML = data.ape
-        columna3 = Fila.insertCell(2).innerHTML = data.pais
-        columna3 = Fila.insertCell(3).innerHTML =
-            `<input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
-                                            <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >`
-        document.getElementById("nom").focus()
-        Vaciar()
-    }
-
-    function Vaciar() {
-        document.getElementById("nom").value = ""
-        document.getElementById("ape").value = ""
-        document.getElementById("pais").value = ""
-        Fila = null
-    }
-
-    function Editarr(td) {
-        Fila = td.parentElement.parentElement
-        document.getElementById("nom").value = Fila.cells[0].innerHTML
-        document.getElementById("ape").value = Fila.cells[1].innerHTML
-        document.getElementById("pais").value = Fila.cells[2].innerHTML
-    }
-
-    function Actualizar(DataForm) {
-        Fila.cells[0].innerHTML = DataForm.nom
-        Fila.cells[1].innerHTML = DataForm.ape
-        Fila.cells[2].innerHTML = DataForm.pais
-        document.getElementById("nom").focus()
-    }
-
-    function Borrarr(td) {
-        if (confirm('¿Seguro de borrar este registro?')) {
-            row = td.parentElement.parentElement
-            document.getElementById("tabla").deleteRow(row.rowIndex)
-            Vaciar()
-        }
-    }
-</script>
-
-
 </html>
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-crud/index.html at main · GabrielAlejandroOM/crud
